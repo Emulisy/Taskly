@@ -1,0 +1,141 @@
+/* header container */
+.header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100vw;
+  height: 60px;
+  border-bottom: 1px solid var(--color-shadow);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 15px;
+  box-shadow: 0 2px 3px var(--color-shadow);
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__logo-img {
+  width: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+.header__logo-img:hover {
+  transform: scale(1.05);
+}
+
+.header__logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+.header__logo-text:hover {
+  color: var(--color-primary-light);
+  transform: scale(1.05) translateX(3px);
+  letter-spacing: 5px;
+}
+
+/* Header actions (login, search) */
+.header__actions {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+/* User info (welcome user) */
+.header__user-info {
+  font-weight: 700;
+}
+
+/* login/register btn */
+.header__login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-radius: 18px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header__login-btn:hover {
+  transform: scale(1.05);
+}
+
+.header__login-btn--inactive {
+  display: none;
+}
+
+.header__user-profile-btn {
+  font-weight: 650;
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease-in-out;
+  padding: 6px 16px;
+  border-radius: 18px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.header__user-profile-btn:hover {
+  transform: scale(1.05);
+}
+
+.header__bar-btn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding-right: 15px;
+  }
+
+  .header__logo {
+    gap: 10px;
+  }
+
+  .header__logo-img {
+    width: 40px;
+  }
+
+  .header__logo-text {
+    font-size: 1.2rem;
+  }
+
+  .header__user-info {
+    display: none;
+  }
+
+  button {
+    padding: 0 5px;
+    font-size: 0.7rem;
+  }
+
+  .header__bar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .header__bar-btn--active {
+    color: var(--color-primary-light);
+  }
+
+  .header__actions {
+    gap: 20px;
+  }
+}

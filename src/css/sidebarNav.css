@@ -1,0 +1,174 @@
+/* sidebar container nav */
+.nav {
+  position: relative;
+  width: 220px;
+  height: calc(100vh - 60px);
+  background-color: var(--color-background);
+  border-right: 1px solid var(--color-border);
+  padding-top: 20px;
+  top: 60px;
+  left: 0;
+  box-shadow: 1px 0 5px var(--color-shadow);
+}
+
+/* Nav list */
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px;
+}
+
+/* Nav item */
+.nav__item {
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Nav link */
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 80%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: none;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.nav__link:hover {
+  background-color: var(--color-hover);
+}
+
+/* Active nav item */
+.nav__item--active .nav__link {
+  background-color: var(--color-primary-lighter);
+  color: var(--color-primary);
+}
+.nav__item--active .nav__icon {
+  color: var(--color-primary);
+}
+
+/* Nav icon */
+.nav__icon {
+  width: 16px;
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: 16px;
+}
+
+/* Nav text */
+.nav__text {
+  flex: 1;
+}
+
+/* Sidebar Controls Container */
+.nav__controls {
+  width: 100%;
+  position: absolute;
+  bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.nav__control-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav__control-item i {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.nav__control-item:hover {
+  background-color: var(--color-hover);
+  color: var(--color-primary);
+}
+
+.nav__control-item:hover i {
+  color: var(--color-primary);
+}
+
+/* Theme toggle switch */
+.nav__control-theme-text {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.nav__control-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  position: relative;
+  width: 48px;
+}
+
+.nav__control-theme input {
+  display: none;
+}
+
+.nav__control-theme-slider {
+  background-color: var(--color-text-light);
+  bottom: 0;
+  cursor: pointer;
+  transition: 0.4s;
+  border-radius: 80px;
+  width: 40px;
+  height: 20px;
+}
+
+.nav__control-theme-slider:before {
+  background-color: var(--color-background);
+  bottom: 4px;
+  content: "";
+  height: 16px;
+  left: 8px;
+  position: absolute;
+  transition: 0.4s;
+  width: 16px;
+  border-radius: 50%;
+}
+
+.nav__control-theme input:checked + .nav__control-theme-slider {
+  background-color: var(--color-primary);
+}
+
+.nav__control-theme input:checked + .nav__control-theme-slider:before {
+  transform: translateX(17px);
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    width: 200px;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    left: auto;
+    z-index: 1000;
+    box-shadow: -1px 0 5px var(--color-shadow);
+    transform: translateX(100%);
+
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav.nav--active {
+    transform: translateX(0);
+  }
+}

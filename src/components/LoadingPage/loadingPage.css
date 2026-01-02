@@ -1,0 +1,128 @@
+.loader__wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+
+  overflow: hidden;
+}
+
+.loader__wrapper--hide {
+  display: none;
+}
+
+.loader__text {
+  font-size: 2rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  opacity: 0.85;
+}
+
+.loader__dot {
+  margin-top: 1.3rem;
+  width: 0.27em;
+  height: 0.27em;
+  background-color: var(--color-text-secondary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: jump 1.5s ease-in-out infinite;
+}
+
+.loader__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader__dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader__dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes jump {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0); /* 底部 */
+  }
+  30% {
+    transform: translateY(-12px); /* 弹起高度 */
+  }
+}
+
+.loader__wave--1 {
+  width: 4500px;
+  height: 4500px;
+  opacity: 0.9;
+  background-color: var(--color-primary);
+  border-radius: 45%;
+  position: absolute;
+  left: 50%;
+  animation: rotate-left 12s linear infinite;
+}
+
+.loader__wave--2 {
+  width: 4500px;
+  height: 4500px;
+  opacity: 0.6;
+  background-color: var(--color-primary-light);
+  border-radius: 45%;
+  position: absolute;
+  left: 50%;
+  animation: rotate-right 12s linear infinite;
+}
+
+.loader__wave--3 {
+  width: 4500px;
+  height: 4500px;
+  opacity: 0.9;
+  background-color: var(--color-primary-lighter);
+  border-radius: 45%;
+  position: absolute;
+  left: 50%;
+  animation: rotate-left 15s linear infinite;
+}
+
+.loader__wave--3 {
+  width: 4500px;
+  height: 4500px;
+  opacity: 0.9;
+  background-color: var(--color-primary);
+  border-radius: 45%;
+  position: absolute;
+  left: 50%;
+  animation: rotate-right 15s linear infinite;
+}
+
+@keyframes rotate-left {
+  0% {
+    transform: translate(-40%, 57%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-60%, 57%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-40%, 57%) rotate(360deg);
+  }
+}
+
+@keyframes rotate-right {
+  0% {
+    transform: translate(-60%, 57%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-40%, 57%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-60%, 57%) rotate(360deg);
+  }
+}

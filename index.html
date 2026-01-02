@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <title>Taskly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/sidebarNav.css" />
+    <link rel="stylesheet" href="./src//css/header.css" />
+
+    <script type="module" src="./src/app.js" defer></script>
+  </head>
+  <body>
+    <div class="loader__container"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__logo">
+        <img src="/img/logo.png" alt="logo" class="header__logo-img" />
+        <a class="header__logo-text">Taskly</a>
+      </div>
+
+      <div class="header__actions">
+        <button class="header__login-btn">Register/Login</button>
+
+        <div class="header__user-info"></div>
+
+        <button class="header__user-profile-btn" style="display: none">
+          <i class="fa-regular fa-user"></i> Profile
+        </button>
+
+        <button class="header__bar-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="login__overlay">
+      <div class="login__container"></div>
+    </div>
+
+    <div class="user-profile__overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item nav__item--active" data-tab="calendar">
+          <button class="nav__link">
+            <i class="nav__icon fa-solid fa-calendar"></i>
+            <span class="nav__text">Calendar</span>
+          </button>
+        </li>
+        <li class="nav__item" data-tab="starred">
+          <button class="nav__link">
+            <i class="nav__icon fa-solid fa-star"></i>
+            <span class="nav__text">Starred</span>
+          </button>
+        </li>
+        <li class="nav__item" data-tab="all-tasks">
+          <button class="nav__link">
+            <i class="nav__icon fa-solid fa-list-check"></i>
+            <span class="nav__text">All Tasks</span>
+          </button>
+        </li>
+        <li class="nav__item" data-tab="completed">
+          <button class="nav__link">
+            <i class="nav__icon fa-solid fa-check"></i>
+            <span class="nav__text">Completed</span>
+          </button>
+        </li>
+        <li class="nav__item" data-tab="search">
+          <button class="nav__link">
+            <i class="nav__icon fa-solid fa-magnifying-glass"></i>
+            <span class="nav__text">Search</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav__controls">
+        <div class="nav__control-item">
+          <div class="nav__control-theme-text">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+            <span>Dark Mode</span>
+          </div>
+          <label class="nav__control-theme" for="theme-control">
+            <input type="checkbox" id="theme-control" />
+            <div class="nav__control-theme-slider"></div>
+          </label>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="main__tab" data-tab="calendar">
+        <!-- The Calendar -->
+        <div class="calendar"></div>
+      </section>
+
+      <section class="main__tab" data-tab="starred" style="display: none">
+        <div class="starred"></div>
+      </section>
+      <section class="main__tab" data-tab="all-tasks" style="display: none">
+        <div class="all-tasks"></div>
+      </section>
+      <section class="main__tab" data-tab="completed" style="display: none">
+        <div class="completed"></div>
+      </section>
+      <section class="main__tab" data-tab="search" style="display: none">
+        <div class="search"></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+.all__wrapper {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all__header {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+}
+
+.all__results {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .all__header {
+    font-size: 1.2rem;
+  }
+}

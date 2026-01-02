@@ -1,0 +1,279 @@
+:root {
+  --card-color: var(--color-primary);
+}
+
+.task {
+  width: 100%;
+  padding: 10px 0;
+  padding-left: 70px;
+  padding-right: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--color-background);
+  background-image: linear-gradient(
+    to right,
+    var(--card-color),
+    var(--card-color)
+  );
+  background-repeat: no-repeat;
+  background-size: 50px 100%;
+
+  transition: transform 0.2s ease-in-out, background-size 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.task--fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.task--fade-out {
+  animation: fadeOut 0.2s ease-in-out;
+}
+
+.task:hover {
+  transform: scale(1.01);
+  background-size: 30px 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* ===============================
+   Card
+================================= */
+
+.task__header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* ===============================
+   Checkbox
+================================= */
+
+.task__checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.task__checkbox input {
+  display: none;
+}
+
+.checkbox__box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.12s ease;
+}
+
+.checkbox__box::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid var(--color-background);
+  border-bottom: 2px solid var(--color-background);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.15s ease;
+}
+
+.task__checkbox input:checked + .checkbox__box {
+  background-color: var(--card-color);
+  border-color: var(--card-color);
+}
+
+.task__checkbox input:checked + .checkbox__box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* ===============================
+   Content
+================================= */
+
+.task__header-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ===============================
+   Title Input
+================================= */
+
+.task__title-input {
+  all: unset;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.task__title-input:focus {
+  background: var(--color-hover);
+}
+
+/* ===============================
+   Date Input
+================================= */
+
+.task__date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-light);
+}
+
+.task__date-input {
+  all: unset;
+  font-size: 13px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.task__date-input:focus {
+  background: var(--color-hover);
+}
+
+.task__date-separator {
+  opacity: 0.6;
+}
+
+/* star */
+.task__star:hover {
+  color: var(--card-color);
+}
+
+.task__star-true {
+  color: var(--card-color);
+}
+
+/* delete */
+.task__delete:hover {
+  color: var(--color-error);
+}
+
+/* Tablet / Medium screens */
+@media screen and (max-width: 768px) {
+  .task {
+    padding-left: 50px;
+    padding-right: 20px;
+
+    background-color: var(--color-background);
+    background-image: linear-gradient(
+      to right,
+      var(--card-color),
+      var(--card-color)
+    );
+    background-repeat: no-repeat;
+    background-size: 30px 100%;
+
+    padding-left: 40px;
+  }
+
+  .task:hover {
+    transform: scale(1.01);
+    background-size: 20px 100%;
+  }
+
+  .task__header {
+    gap: 20px; /* 减少间距 */
+  }
+
+  .task__header-content {
+    gap: 4px;
+  }
+
+  .task__title-input {
+    font-size: 0.95rem;
+  }
+
+  .task__date {
+    gap: 4px;
+  }
+
+  .task__star,
+  .task__delete {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile / Small screens */
+@media screen and (max-width: 530px) {
+  .task {
+    padding-left: 40px;
+    padding-right: 16px;
+
+    background-color: var(--color-background);
+    background-image: linear-gradient(
+      to right,
+      var(--card-color),
+      var(--card-color)
+    );
+    background-repeat: no-repeat;
+    background-size: 15px 100%;
+
+    padding-left: 20px;
+
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 12px;
+  }
+
+  .task:hover {
+    background-size: 10px 100%;
+  }
+
+  .task__header {
+    gap: 8px; /* 更紧凑 */
+  }
+
+  .task__title-input {
+    font-size: 0.7rem;
+  }
+
+  .task__date {
+    gap: 2px;
+  }
+
+  .task__date-input {
+    font-size: 10px;
+    padding: 1px 2px;
+  }
+
+  .task__star,
+  .task__delete {
+    font-size: 0.9rem;
+  }
+}

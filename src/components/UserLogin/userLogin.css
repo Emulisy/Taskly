@@ -1,0 +1,147 @@
+/* transparent black overlay */
+.login__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__overlay--active {
+  display: flex;
+}
+
+/* container */
+.login__container {
+  position: relative;
+  width: 360px;
+  padding: 24px;
+  z-index: 100;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  box-shadow: 0 20px 40px var(--color-shadow);
+}
+
+/* wrapper */
+.login__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* the header (login/register) */
+.login__header {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* form element */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* input boxes */
+.login__form-box {
+  position: relative;
+  width: 100%;
+}
+
+.login__form-box input {
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 1rem;
+
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  outline: none;
+
+  color: var(--color-text-primary);
+}
+
+.login__form-box input:focus {
+  border-color: var(--color-primary-light);
+}
+
+/* label */
+.login__form-box label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+
+  pointer-events: none;
+  background-color: var(--color-surface);
+  padding: 0 6px;
+
+  transition: all 0.2s ease;
+}
+
+/* label float */
+.login__form-box input:focus + label,
+.login__form-box input:not(:placeholder-shown) + label {
+  top: -6px;
+  font-size: 0.75rem;
+  color: var(--color-primary-light);
+}
+
+/* submit btn */
+.login__btn {
+  margin-top: 10px;
+  padding: 12px;
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  background-color: var(--color-primary);
+  color: var(--color-background);
+
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.login__btn:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+/* switch (login/register) */
+.login__switch {
+  background: none;
+  border: none;
+
+  color: var(--color-primary-light);
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login__switch:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 400px) {
+  .login__container {
+    width: 90%;
+  }
+}

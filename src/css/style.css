@@ -1,0 +1,104 @@
+/* global reset and base */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* color variables */
+:root {
+  /* Base backgrounds */
+  --color-background: #ffffff; /* Page background */
+  --color-surface: #f9f9f9; /* Content area background */
+  --color-border: #e0e0e0; /* Border color */
+  --color-shadow: rgba(0, 0, 0, 0.05); /* Shadow */
+
+  /* Text colors */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-light: #888888;
+
+  /* Primary theme colors */
+  --color-primary: #60d2f9; /* Main theme color */
+  --color-primary-light: #4ac0ff; /* Hover / Highlight */
+  --color-primary-lighter: rgba(96, 210, 249, 0.2); /* Selected background */
+
+  /* Status colors */
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+
+  /* Hover / interactive backgrounds */
+  --color-hover: rgba(0, 0, 0, 0.05);
+}
+
+/* dark theme */
+body.dark-theme {
+  --color-background: #1e1e1e;
+  --color-surface: #2c2c2c;
+  --color-border: #3c3c3c;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #aaaaaa;
+  --color-text-light: #888888;
+
+  --color-primary: #60d2f9;
+  --color-primary-light: #4ac0ff;
+  --color-primary-lighter: rgba(96, 210, 249, 0.2);
+
+  --color-hover: rgba(255, 255, 255, 0.1);
+}
+
+/* main content for navbar items */
+.main-content {
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background-color: var(--color-surface);
+  flex: 1;
+  padding: 30px;
+  padding-top: 20px;
+}
+
+/* individual tabs */
+.main__tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .main-content {
+    padding: 15px;
+  }
+}

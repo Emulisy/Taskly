@@ -1,0 +1,179 @@
+/* ===============================
+   Calendar
+================================= */
+.calendar {
+  width: 100%;
+  color: var(--color-text-light);
+}
+
+/* The calendar header */
+.calendar__header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  box-shadow: 0 2px 2px var(--color-shadow);
+}
+
+/* Calendar nav buttons */
+.calendar__nav {
+  font-size: 1.3rem;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.calendar__nav:hover {
+  color: var(--color-primary-light);
+}
+
+/* calendar selectors (year and month) */
+.calendar__selectors {
+  display: flex;
+  gap: 12px;
+}
+
+.calendar__selector {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.calendar__selector select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; /* Default select style */
+
+  padding: 2px 36px 2px 12px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.calendar__selector select:hover {
+  border-color: var(--color-primary);
+}
+
+.calendar__selector select:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+}
+
+.calendar__selector-icon {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1rem;
+  right: 10px;
+  color: var(--color-text-light);
+}
+
+/* The calendar dates */
+.calendar__dates {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  margin-top: 10px;
+  box-shadow: 0 2px 2px var(--color-shadow);
+  color: var(--color-text-primary);
+}
+
+.calendar__dates thead {
+  color: var(--color-text-light);
+}
+
+/* The week */
+.calendar__week {
+  width: 100%;
+  height: 35px;
+  padding: 0 2px;
+  display: flex;
+}
+
+.calendar__date {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.calendar__date:hover {
+  background-color: var(--color-shadow);
+}
+
+.calendar__date--today {
+  background-color: var(--color-primary);
+}
+
+.calendar__date--inactive {
+  color: var(--color-text-light);
+}
+
+.calendar__date--active {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: -2px;
+}
+
+.calendar__current-date {
+  font-size: 1.8rem;
+  font-weight: 650;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.calendar__date--has-task {
+  position: relative;
+}
+
+.calendar__date--has-task::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-error);
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 530px) {
+  .calendar__dates {
+    font-size: 0.7rem;
+  }
+
+  .calendar__nav {
+    font-size: 1rem;
+  }
+
+  .calendar__selector select {
+    min-width: 80px;
+    font-size: 0.7rem;
+  }
+
+  .calendar__current-date {
+    font-size: 1.5rem;
+  }
+}
