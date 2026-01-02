@@ -8,8 +8,6 @@ import { initStar } from "./bootstrap/starred.js";
 import { initComplete } from "./bootstrap/completed.js";
 import { initAllTasks } from "./bootstrap/allTasks.js";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"; //vercel speed insight
-
 initNav();
 initCalendar();
 initSearch();
