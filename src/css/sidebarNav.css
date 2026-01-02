@@ -80,11 +80,11 @@
 .nav__control-item {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 8px 12px;
+  gap: 10px;
   border-radius: 8px;
+  padding: 8px 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
   transition: background 0.2s, color 0.2s;
 }
@@ -105,16 +105,10 @@
   color: var(--color-primary);
 }
 
-/* Theme toggle switch */
-.nav__control-theme-text {
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
 .nav__control-theme {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 24px;
   position: relative;
   width: 48px;
@@ -139,7 +133,7 @@
   bottom: 4px;
   content: "";
   height: 16px;
-  left: 8px;
+  left: 4px;
   position: absolute;
   transition: 0.4s;
   width: 16px;
