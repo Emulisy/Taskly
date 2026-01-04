@@ -170,7 +170,8 @@
   .loader__wave--2,
   .loader__wave--3,
   .loader__wave--4 {
-    width: 1500px;
-    height: 1500px;
+    width: 900px;
+    height: 900px;
+    top: 130%;
   }
 }
