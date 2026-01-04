@@ -1,24 +1,37 @@
+/* =========================
+   Loader Wrapper
+========================= */
 .loader__wrapper {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  backdrop-filter: blur(4px);
+  inset: 0;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  /* backdrop-filter 性能杀手，生产环境建议关闭 */
+  /* backdrop-filter: blur(4px); */
+
   z-index: 10001;
-
   overflow: hidden;
+
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.25s ease;
 }
 
+/* 隐藏状态：不触发布局 */
 .loader__wrapper--hide {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* =========================
+   Loading Text
+========================= */
 .loader__text {
   font-size: 2rem;
   color: var(--color-text-secondary);
@@ -26,8 +39,12 @@
   align-items: center;
   gap: 0.2em;
   opacity: 0.85;
+  z-index: 2;
 }
 
+/* =========================
+   Jumping Dots
+========================= */
 .loader__dot {
   margin-top: 1.3rem;
   width: 0.27em;
@@ -36,6 +53,7 @@
   border-radius: 50%;
   display: inline-block;
   animation: jump 1.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 .loader__dot:nth-child(1) {
@@ -52,77 +70,107 @@
   0%,
   60%,
   100% {
-    transform: translateY(0); /* 底部 */
+    transform: translateY(0);
   }
   30% {
-    transform: translateY(-12px); /* 弹起高度 */
+    transform: translateY(-12px);
   }
 }
 
-.loader__wave--1 {
-  width: 4500px;
-  height: 4500px;
-  opacity: 0.9;
-  background-color: var(--color-primary);
+/* =========================
+   Wave Animation (Optimized)
+========================= */
+.loader__wave--1,
+.loader__wave--2,
+.loader__wave--3,
+.loader__wave--4 {
+  width: 2200px;
+  height: 2200px;
   border-radius: 45%;
   position: absolute;
   left: 50%;
-  animation: rotate-left 12s linear infinite;
+  top: 210%;
+
+  will-change: transform;
+}
+
+/* Wave layers */
+.loader__wave--1 {
+  background-color: var(--color-primary);
+  opacity: 0.9;
+  animation: rotate-left 10s linear infinite;
 }
 
 .loader__wave--2 {
-  width: 4500px;
-  height: 4500px;
-  opacity: 0.6;
   background-color: var(--color-primary-light);
-  border-radius: 45%;
-  position: absolute;
-  left: 50%;
-  animation: rotate-right 12s linear infinite;
+  opacity: 0.6;
+  animation: rotate-middle 14s linear infinite;
 }
 
 .loader__wave--3 {
-  width: 4500px;
-  height: 4500px;
-  opacity: 0.9;
   background-color: var(--color-primary-lighter);
-  border-radius: 45%;
-  position: absolute;
-  left: 50%;
-  animation: rotate-left 15s linear infinite;
+  opacity: 0.8;
+  animation: rotate-left 20s linear infinite;
 }
 
-.loader__wave--3 {
-  width: 4500px;
-  height: 4500px;
-  opacity: 0.9;
+.loader__wave--4 {
   background-color: var(--color-primary);
-  border-radius: 45%;
-  position: absolute;
-  left: 50%;
-  animation: rotate-right 15s linear infinite;
+  opacity: 0.5;
+  animation: rotate-right 16s linear infinite;
 }
 
+/* =========================
+   Keyframes
+========================= */
 @keyframes rotate-left {
   0% {
-    transform: translate(-40%, 57%) rotate(0deg);
+    transform: translate(-20%, -50%) rotate(360deg);
   }
   50% {
-    transform: translate(-60%, 57%) rotate(180deg);
+    transform: translate(-30%, -50%) rotate(180deg);
   }
   100% {
-    transform: translate(-40%, 57%) rotate(360deg);
+    transform: translate(-20%, -50%) rotate(0deg);
   }
 }
 
 @keyframes rotate-right {
   0% {
-    transform: translate(-60%, 57%) rotate(0deg);
+    transform: translate(-80%, -50%) rotate(0deg);
   }
   50% {
-    transform: translate(-40%, 57%) rotate(180deg);
+    transform: translate(-70%, -50%) rotate(180deg);
   }
   100% {
-    transform: translate(-60%, 57%) rotate(360deg);
+    transform: translate(-80%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotate-middle {
+  0% {
+    transform: translate(-55%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-45%, -50%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-55%, -50%) rotate(360deg);
+  }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media screen and (max-width: 530px) {
+  .loader__text {
+    font-size: 1.2rem;
+  }
+
+  .loader__wave--1,
+  .loader__wave--2,
+  .loader__wave--3,
+  .loader__wave--4 {
+    width: 1500px;
+    height: 1500px;
   }
 }

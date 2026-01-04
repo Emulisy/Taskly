@@ -5,9 +5,6 @@ import AuthService from "../service/AuthService.js";
 import AlertService from "../service/AlertService.js";
 
 export function initAuth(taskStore) {
-  /* ===============================
-     DOM references
-  ================================ */
   const loginBtn = document.querySelector(".header__login-btn");
   const userInfo = document.querySelector(".header__user-info");
   const profileBtn = document.querySelector(".header__user-profile-btn");
@@ -16,15 +13,9 @@ export function initAuth(taskStore) {
   const loginContainer = document.querySelector(".login__container");
   const profileOverlay = document.querySelector(".user-profile__overlay");
 
-  /* ===============================
-     Components
-  ================================ */
   new UserLogin(loginContainer);
   let profileComponent = null;
 
-  /* ===============================
-     UI helpers
-  ================================ */
   function showLoggedInUI(user) {
     loginBtn.style.display = "none";
     userInfo.textContent =
@@ -38,9 +29,7 @@ export function initAuth(taskStore) {
     profileBtn.style.display = "none";
   }
 
-  /* ===============================
-     Core: apply user
-  ================================ */
+  // Core: apply the user
   function applyUser(user) {
     taskStore.setUser(user);
 
@@ -59,9 +48,6 @@ export function initAuth(taskStore) {
     profileOverlay.classList.remove("user-profile__overlay--active");
   }
 
-  /* ===============================
-     UI interactions
-  ================================ */
   loginBtn.addEventListener("click", () => {
     loginOverlay.classList.add("login__overlay--active");
   });
@@ -77,10 +63,6 @@ export function initAuth(taskStore) {
       profileOverlay.classList.add("user-profile__overlay--active");
     }
   });
-
-  /* ===============================
-     Auth events (核心)
-  ================================ */
 
   // Login
   window.addEventListener("auth:login", async (e) => {
@@ -124,9 +106,9 @@ export function initAuth(taskStore) {
       const user = await AuthService.updateProfile(e.detail);
       applyUser(user);
 
-      AlertService.show("Update successful!"); // replaced alert
+      AlertService.show("Update successful!");
     } catch (err) {
-      AlertService.show("Failed to update profile: " + err.message); // replaced alert
+      AlertService.show("Failed to update profile: " + err.message);
     } finally {
       hideLoading();
     }
@@ -141,17 +123,15 @@ export function initAuth(taskStore) {
       taskStore.clearUser();
       applyUser(null);
 
-      AlertService.show("You have logged out!"); // replaced alert
+      AlertService.show("You have logged out!");
     } catch (err) {
-      AlertService.show("Logout failed: " + err.message); // replaced alert
+      AlertService.show("Logout failed: " + err.message);
     } finally {
       hideLoading();
     }
   });
 
-  /* ===============================
-     Restore session
-  ================================ */
+  // restore session
   restoreSession();
 
   async function restoreSession() {
