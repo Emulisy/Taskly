@@ -9,7 +9,7 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-family: "Orbitron", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   display: flex;
@@ -33,53 +33,75 @@ button {
   cursor: pointer;
 }
 
-/* color variables */
+/* ===============================
+   Atomic Punk × Retro Futurism
+   =============================== */
+
+/* light theme */
 :root {
-  /* Base backgrounds */
-  --color-background: #ffffff; /* Page background */
-  --color-surface: #f9f9f9; /* Content area background */
-  --color-border: #e0e0e0; /* Border color */
-  --color-shadow: rgba(0, 0, 0, 0.05); /* Shadow */
+  /* background & surface */
+  --color-background: #f4f1ea;
+  --color-surface: #fbf9f4;
+  --color-border: #d6cfc4;
+  --color-shadow: rgba(40, 60, 70, 0.15);
 
-  /* Text colors */
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-text-light: #888888;
+  /* text */
+  --color-text-primary: #1f2a2a;
+  --color-text-secondary: #4e6a6a;
+  --color-text-light: #8a9c98;
 
-  /* Primary theme colors */
-  --color-primary: #60d2f9; /* Main theme color */
-  --color-primary-light: #4ac0ff; /* Hover / Highlight */
-  --color-primary-lighter: rgba(96, 210, 249, 0.2); /* Selected background */
+  /* primary (atomic teal) */
+  --color-primary: #007f7a;
+  --color-primary-light: #2fb7ad;
+  --color-primary-lighter: rgba(0, 127, 122, 0.18);
 
-  /* Status colors */
-  --color-success: #4caf50;
-  --color-warning: #ff9800;
-  --color-error: #f44336;
+  /* status colors */
+  --color-error: #ff8c42;
 
-  /* Hover / interactive backgrounds */
-  --color-hover: rgba(0, 0, 0, 0.05);
+  /* accent */
+  --color-accent: #ff8c42;
+  --color-accent-light: #ffb074;
+  --color-accent-lighter: rgba(255, 140, 66, 0.18);
+
+  /* interaction */
+  --color-hover: rgba(0, 127, 122, 0.1);
 }
 
-/* dark theme */
+/* ===============================
+   dark theme – retro future night
+   =============================== */
 body.dark-theme {
-  --color-background: #1e1e1e;
-  --color-surface: #2c2c2c;
-  --color-border: #3c3c3c;
-  --color-shadow: rgba(0, 0, 0, 0.5);
+  /* background & surface */
+  --color-background: #0b1416;
+  --color-surface: #132124;
+  --color-border: #1f3539;
+  --color-shadow: rgba(0, 0, 0, 0.65);
 
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #aaaaaa;
-  --color-text-light: #888888;
+  /* text */
+  --color-text-primary: #e6f7f5;
+  --color-text-secondary: #8fded6;
+  --color-text-light: #4e7f7a;
 
-  --color-primary: #60d2f9;
-  --color-primary-light: #4ac0ff;
-  --color-primary-lighter: rgba(96, 210, 249, 0.2);
+  /* primary (neon atomic) */
+  --color-primary: #2ecdc4;
+  --color-primary-light: #66fff3;
+  --color-primary-lighter: rgba(46, 205, 196, 0.25);
 
-  --color-hover: rgba(255, 255, 255, 0.1);
+  /* status colors */
+  --color-error: #ffb74d;
+
+  /* accent */
+  --color-accent: #ffb74d;
+  --color-accent-light: #ffd180;
+  --color-accent-lighter: rgba(255, 183, 77, 0.25);
+
+  /* interaction */
+  --color-hover: rgba(102, 255, 243, 0.12);
 }
 
 /* main content for navbar items */
 .main-content {
+  position: relative;
   margin-top: 60px;
   height: calc(100vh - 60px);
   overflow-y: auto;
@@ -87,6 +109,7 @@ body.dark-theme {
   flex: 1;
   padding: 30px;
   padding-top: 20px;
+  overflow-x: hidden;
 }
 
 /* individual tabs */

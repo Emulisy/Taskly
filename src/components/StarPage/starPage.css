@@ -1,9 +1,11 @@
 .star__wrapper {
+  position: relative;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .star__header {
@@ -12,11 +14,151 @@
 }
 
 .star__results {
+  position: relative;
   width: 100%;
+  z-index: 100;
+}
+
+.star__bg {
+  position: fixed;
+  width: calc(100vw - 220px);
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star__bg-rect {
+  position: relative;
+  width: 15px;
+  background-color: var(--color-accent);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 0;
+  animation: grow 0.2s forwards;
+}
+
+.star__bg-rect::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-text-secondary);
+  height: 0;
+  animation: growBefore 0.4s forwards;
+}
+
+.star__bg-rect::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-primary-light);
+  height: 0;
+  animation: growAfter 0.7s forwards;
+}
+
+.star__bg-rect:nth-child(2) {
+  --final-height: 500px;
+  animation-delay: 0s;
+}
+.star__bg-rect:nth-child(3) {
+  --final-height: 321px;
+  animation-delay: 0.05s;
+}
+.star__bg-rect:nth-child(4) {
+  --final-height: 214px;
+  animation-delay: 0.1s;
+}
+.star__bg-rect:nth-child(5) {
+  --final-height: 129px;
+  animation-delay: 0.15s;
+}
+.star__bg-rect:nth-child(6) {
+  --final-height: 86px;
+  animation-delay: 0.2s;
+}
+.star__bg-rect:nth-child(7) {
+  --final-height: 57px;
+  animation-delay: 0.25s;
+}
+.star__bg-rect:nth-child(8) {
+  --final-height: 36px;
+  animation-delay: 0.3s;
+}
+.star__bg-rect:nth-child(9) {
+  --final-height: 21px;
+  animation-delay: 0.35s;
+}
+
+.star__bg-rect:nth-child(8)::before {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.star__bg-rect:nth-child(9)::before {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--final-height);
+    opacity: 1;
+  }
+}
+
+@keyframes growBefore {
+  from {
+    height: 0;
+  }
+  to {
+    height: calc(var(--final-height) * 0.8);
+  }
+}
+
+@keyframes growAfter {
+  from {
+    height: 0;
+  }
+  to {
+    height: calc(var(--final-height) * 0.5);
+  }
+}
+
+.star__bg-star {
+  position: absolute;
+  animation: growStar 0.2s forwards;
+  font-size: 15px;
+  color: var(--color-accent-light);
+  text-shadow: 0 0 2px var(--color-accent-light);
+  filter: drop-shadow(0 0 1px var(--color-accent-light));
+}
+
+@keyframes growStar {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 520px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .star__header {
     font-size: 1.2rem;
+  }
+
+  .star__bg {
+    width: 100vw;
   }
 }

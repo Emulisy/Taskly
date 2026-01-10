@@ -12,19 +12,15 @@ function parseDateToStr(date) {
 }
 
 function matchDate(task, date) {
+  if (!task.endDate) return true;
+
   const d = new Date(date);
+  const e = new Date(task.endDate);
+
   d.setHours(0, 0, 0, 0);
+  e.setHours(0, 0, 0, 0);
 
-  const start = task.startDate ? new Date(task.startDate) : null;
-  const end = task.endDate ? new Date(task.endDate) : null;
-
-  const s = start ? start.setHours(0, 0, 0, 0) : null;
-  const e = end ? end.setHours(0, 0, 0, 0) : null;
-
-  if (!s && !e) return true;
-  if (!s) return d <= e;
-  if (!e) return d >= s;
-  return d >= s && d <= e;
+  return d.getTime() === e.getTime();
 }
 
 function matchKeyword(task, keyword) {

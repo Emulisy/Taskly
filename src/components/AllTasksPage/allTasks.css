@@ -4,6 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  z-index: 100;
 }
 
 .all__header {
@@ -12,11 +15,105 @@
 }
 
 .all__results {
+  position: relative;
+  z-index: 100;
   width: 100%;
+}
+
+.all__bg {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: calc(100vw - 220px);
+  height: 100%;
+  z-index: 1;
+}
+
+.all__bg-circle {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  transform: translate(-50%, 50%);
+  transform-origin: center;
+
+  animation: rotate 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.all__bg-circle:nth-of-type(1) {
+  width: 250px;
+  background: conic-gradient(
+    transparent 0deg 180deg,
+    var(--color-accent-light) 180deg 360deg
+  );
+}
+
+.all__bg-circle:nth-of-type(2) {
+  width: 220px;
+  background: conic-gradient(
+    transparent 0deg 150deg,
+    var(--color-accent) 150deg 360deg
+  );
+}
+
+.all__bg-circle:nth-of-type(3) {
+  width: 300px;
+  background: conic-gradient(
+    transparent 0deg 200deg,
+    var(--color-accent-lighter) 200deg 360deg
+  );
+}
+
+.all__bg svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.all__bg circle {
+  transform-origin: 0 400px;
+}
+
+.all__bg circle:nth-of-type(1) {
+  animation: svg-rotate 30s linear infinite;
+}
+
+.all__bg circle:nth-of-type(2) {
+  animation: svg-rotate 60s linear infinite;
+}
+
+.all__bg circle:nth-of-type(3) {
+  animation: svg-rotate 70s linear infinite;
+}
+
+@keyframes svg-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, 50%);
+  }
+  to {
+    transform: translate(-50%, 50%) rotate(200deg);
+  }
 }
 
 @media screen and (max-width: 768px) {
   .all__header {
     font-size: 1.2rem;
+  }
+
+  .all__bg {
+    width: 100vw;
   }
 }

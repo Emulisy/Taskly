@@ -80,7 +80,6 @@ class TaskStore extends EventTarget {
   // adding a task to local storage
   addTask({
     title = "New Task",
-    startDate = null,
     endDate = null,
     completed = false,
     starred = false,
@@ -89,7 +88,6 @@ class TaskStore extends EventTarget {
       id: Date.now(), //temp id, will be updated when sync to supabase
       user_id: this.user?.id ?? null,
       title,
-      startDate,
       endDate,
       completed,
       starred,
@@ -135,7 +133,7 @@ class TaskStore extends EventTarget {
     this.dispatchEvent(new CustomEvent("updateTask", { detail: task }));
   }
 
-  // update a task filed(title，description, endDatem startDate)
+  // update a task filed(title，description, endDatem)
   updateField(id, field, value) {
     const task = this.tasks.find((t) => t.id === id);
     if (!task) return;

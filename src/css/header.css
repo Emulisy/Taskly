@@ -1,30 +1,43 @@
-/* header container */
+/* ===============================
+   Header 
+   =============================== */
+
 .header {
   position: fixed;
-  z-index: 1000;
   top: 0;
+  z-index: 1000;
+
   width: 100vw;
   height: 60px;
-  border-bottom: 1px solid var(--color-shadow);
+
+  background: linear-gradient(
+    180deg,
+    var(--color-surface),
+    var(--color-background)
+  );
+
+  border-bottom: 1px solid var(--color-border);
+
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-right: 30px;
-  padding-left: 15px;
-  box-shadow: 0 2px 3px var(--color-shadow);
+
+  padding: 0 30px 0 15px;
 }
 
-/* Logo */
+/* ===============================
+   Logo
+   =============================== */
+
 .header__logo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .header__logo-img {
-  width: 60px;
-  transition: all 0.3s ease-in-out;
+  width: 56px;
+  transition: transform 0.25s ease;
 }
 
 .header__logo-img:hover {
@@ -32,47 +45,67 @@
 }
 
 .header__logo-text {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.22em;
+
   color: var(--color-primary);
-  cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
-.header__logo-text:hover {
-  color: var(--color-primary-light);
-  transform: scale(1.05) translateX(3px);
-  letter-spacing: 5px;
+  cursor: pointer;
+
+  transition: color 0.2s ease, letter-spacing 0.2s ease, transform 0.2s ease;
 }
 
-/* Header actions (login, search) */
+.header__logo-text:hover {
+  color: var(--color-primary-light);
+  letter-spacing: 0.35em;
+  transform: translateX(3px);
+}
+
+/* ===============================
+   Actions
+   =============================== */
+
 .header__actions {
   display: flex;
-  gap: 50px;
+  gap: 40px;
   align-items: center;
   color: var(--color-text-secondary);
 }
 
-/* User info (welcome user) */
 .header__user-info {
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
-/* login/register btn */
-.header__login-btn {
+/* ===============================
+   Buttons – Flat Capsule
+   =============================== */
+
+.header__login-btn,
+.header__user-profile-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   height: 36px;
-  padding: 0 16px;
+  padding: 0 18px;
+
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+
   background-color: var(--color-primary);
   color: var(--color-background);
-  border-radius: 18px;
-  transition: transform 0.2s ease-in-out;
+
+  font-weight: 650;
+  letter-spacing: 0.05em;
+
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.header__login-btn:hover {
+.header__login-btn:hover,
+.header__user-profile-btn:hover {
+  background-color: var(--color-primary-light);
   transform: scale(1.05);
 }
 
@@ -80,23 +113,32 @@
   display: none;
 }
 
-.header__user-profile-btn {
-  font-weight: 650;
-  border: 1px solid var(--color-border);
-  transition: transform 0.2s ease-in-out;
-  padding: 6px 16px;
-  border-radius: 18px;
-  background-color: var(--color-primary);
-  color: var(--color-background);
-}
-
-.header__user-profile-btn:hover {
-  transform: scale(1.05);
-}
+/* ===============================
+   Mobile Bar Button
+   =============================== */
 
 .header__bar-btn {
   display: none;
+  background: none;
+  border: none;
+
+  color: var(--color-text-primary);
+  font-size: 1rem;
+
+  transition: color 0.2s ease, transform 0.2s ease;
 }
+
+.header__bar-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__bar-btn--active {
+  color: var(--color-accent);
+}
+
+/* ===============================
+   Responsive
+   =============================== */
 
 @media screen and (max-width: 768px) {
   .header {
@@ -113,29 +155,20 @@
 
   .header__logo-text {
     font-size: 1.2rem;
+    letter-spacing: 0.18em;
   }
 
   .header__user-info {
     display: none;
   }
 
-  button {
-    padding: 0 5px;
-    font-size: 0.7rem;
+  .header__actions {
+    gap: 20px;
   }
 
   .header__bar-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-  }
-
-  .header__bar-btn--active {
-    color: var(--color-primary-light);
-  }
-
-  .header__actions {
-    gap: 20px;
   }
 }

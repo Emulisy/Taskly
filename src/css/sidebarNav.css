@@ -1,72 +1,115 @@
-/* sidebar container nav */
+/* ===============================
+   Sidebar 
+   =============================== */
 .nav {
   position: relative;
   width: 220px;
   height: calc(100vh - 60px);
+  top: 60px;
+
   background-color: var(--color-background);
   border-right: 1px solid var(--color-border);
-  padding-top: 20px;
-  top: 60px;
-  left: 0;
   box-shadow: 1px 0 5px var(--color-shadow);
+
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  z-index: 100;
 }
 
 /* Nav list */
 .nav__list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0 10px;
+  gap: 6px;
+  padding: 0 12px;
 }
 
 /* Nav item */
 .nav__item {
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Nav link */
+/* Nav link  */
 .nav__link {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 80%;
+  width: 100%;
   padding: 10px 16px;
   border-radius: 8px;
-  background: none;
+  background-color: transparent;
   color: var(--color-text-secondary);
-  font-size: 14px;
+  font-size: 0.875rem;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    padding-left 0.2s ease-in-out;
 }
+
+.nav__link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary) 0%,
+    var(--color-primary) 40%,
+    var(--color-accent) 40%,
+    var(--color-accent) 70%,
+    var(--color-primary-lighter) 66%,
+    var(--color-primary-lighter) 100%
+  );
+  transition: width 0.3s ease-in-out;
+  -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 50%, 0% 0%);
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 50%, 0% 0%);
+}
+
+/* Hover – only background color change, no shadow */
 .nav__link:hover {
   background-color: var(--color-hover);
+  color: var(--color-primary);
+}
+
+.nav__item--active .nav__link::before {
+  width: 40px;
+  opacity: 1;
 }
 
 /* Active nav item */
 .nav__item--active .nav__link {
+  padding-left: 45px;
   background-color: var(--color-primary-lighter);
   color: var(--color-primary);
 }
+
 .nav__item--active .nav__icon {
   color: var(--color-primary);
 }
 
 /* Nav icon */
 .nav__icon {
-  width: 16px;
+  width: 20px;
   text-align: center;
-  color: var(--color-text-light);
   font-size: 16px;
+  color: var(--color-text-light);
 }
 
 /* Nav text */
 .nav__text {
   flex: 1;
+  font-weight: 500;
 }
 
-/* Sidebar Controls Container */
+/* Sidebar Controls */
 .nav__controls {
   width: 100%;
   position: absolute;
@@ -82,13 +125,14 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  padding: 8px 8px;
+  padding: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   color: var(--color-text-secondary);
-  transition: background 0.2s, color 0.2s;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Control icons */
 .nav__control-item i {
   font-size: 1rem;
   width: 20px;
@@ -96,15 +140,17 @@
   color: var(--color-text-light);
 }
 
+/* Hover – accent highlight */
 .nav__control-item:hover {
   background-color: var(--color-hover);
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .nav__control-item:hover i {
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
+/* Theme toggle */
 .nav__control-theme {
   display: inline-flex;
   align-items: center;
@@ -148,6 +194,10 @@
   transform: translateX(17px);
 }
 
+/* ===============================
+   Responsive – mobile sidebar
+   =============================== */
+
 @media screen and (max-width: 768px) {
   .nav {
     width: 200px;
@@ -156,9 +206,8 @@
     right: 0;
     left: auto;
     z-index: 1000;
-    box-shadow: -1px 0 5px var(--color-shadow);
     transform: translateX(100%);
-
+    box-shadow: -1px 0 5px var(--color-shadow);
     transition: transform 0.3s ease-in-out;
   }
 

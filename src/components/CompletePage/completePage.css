@@ -4,6 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  z-index: 100;
 }
 
 .complete__header {
@@ -12,11 +15,90 @@
 }
 
 .complete__results {
+  position: relative;
   width: 100%;
+  z-index: 100;
+}
+
+.complete__bg {
+  position: fixed;
+  width: calc(100vw - 220px);
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.complete__bg-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 300px;
+  width: 35%;
+  -webkit-clip-path: polygon(0 30%, 0% 100%, 97% 100%);
+  clip-path: polygon(0 30%, 0% 100%, 97% 100%);
+  overflow: hidden;
+}
+
+.complete__bg-left::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  height: 100%;
+  width: 0;
+  --width: 600px;
+
+  background-color: var(--color-primary);
+
+  animation: unfold 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.complete__bg-right {
+  position: absolute;
+  left: calc(100% - 40%);
+  bottom: 0;
+  height: 500px;
+  width: 40%;
+  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 14%);
+  clip-path: polygon(0 100%, 100% 100%, 100% 14%);
+  overflow: hidden;
+}
+
+.complete__bg-right::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  height: 100%;
+  width: 0;
+  --width: 600px;
+
+  background-color: var(--color-primary-light);
+
+  animation: unfold 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes unfold {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--width);
+  }
 }
 
 @media screen and (max-width: 768px) {
   .complete__header {
     font-size: 1.2rem;
+  }
+
+  .complete__bg {
+    width: 100vw;
   }
 }

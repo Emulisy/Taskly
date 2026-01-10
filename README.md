@@ -1,9 +1,10 @@
-<img src="./public/img/logo.png" alt="Taskly logo" width="150">
-
-# Taskly
+<div style="display: flex; align-items: center; justify-content: flex-start; gap: 1rem;">
+    <img src="./public/img/logo.png" alt="Taskly logo" width="150">
+    <span style="font-size: 3rem; font-weight: 700;"> Taskly </span>
+</div>
 
 **Taskly** is a responsive task management **single-page web application (SPA)** built with Vanilla JavaScript.  
-It focuses on **state-driven UI updates**, **offline-first user experience**, and **automatic data synchronization** with a lightweight backend service.
+It focuses on **state-driven UI updates**, **offline-first user experience**, **automatic data synchronization**, and **Retro-futuristic style and responsive UI design** with a lightweight backend service.
 
 Live demo: https://taskly-gray-sigma.vercel.app
 

@@ -58,16 +58,10 @@ export default class TaskItem {
   }
 
   _renderDate() {
-    const { startDate, endDate } = this.task;
+    const { endDate } = this.task;
 
     return `
       <div class="task__date">
-        <input
-          type="date"
-          class="task__date-input"
-          value="${startDate || ""}"
-        >
-        <span class="task__date-separator">→</span>
         <input
           type="date"
           class="task__date-input"
@@ -90,7 +84,7 @@ export default class TaskItem {
     const titleInput = el.querySelector(".task__title-input");
 
     titleInput.addEventListener("focus", () => {
-      //stop sync when user start editing
+      //stop sync when user  editing
       taskStore.stopSync();
     });
 
@@ -109,31 +103,22 @@ export default class TaskItem {
       }
     });
 
-    // date inputs
-    const [startInput, endInput] = el.querySelectorAll(".task__date-input");
+    // end Date input
+    const endInput = el.querySelector(".task__date-input");
 
-    [startInput, endInput].forEach((input) => {
-      //when user start editing stop sync
-      input.addEventListener("focus", () => {
-        taskStore.stopSync();
-      });
+    endInput.addEventListener("focus", () => {
+      taskStore.stopSync();
     });
 
     const updateDates = () => {
-      if (
-        startInput.value &&
-        endInput.value &&
-        startInput.value > endInput.value
-      ) {
-        AlertService.show("Start date cannot be later than end date");
+      if (Input.value && endInput.value && Input.value > endInput.value) {
+        AlertService.show(" date cannot be later than end date");
         return;
       }
 
-      taskStore.updateField(task.id, "startDate", startInput.value || null);
       taskStore.updateField(task.id, "endDate", endInput.value || null);
     };
 
-    startInput.onchange = updateDates;
     endInput.onchange = updateDates;
 
     // delete / star
