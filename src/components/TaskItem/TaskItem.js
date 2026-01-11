@@ -36,11 +36,22 @@ export default class TaskItem {
             task.starred ? "fa-solid task__star-true" : "fa-regular"
           } fa-star"></i>
         </button>
-
         <button class="task__delete">
           <i class="fa-solid fa-trash-can"></i>
         </button>
       </div>
+      <div class="task__content">
+        <div class="task__content-line"></div>
+        <div class="task__content-subtitle">Description</div>
+        <textarea
+          class="task__description-input"
+          placeholder="Add a description..."
+          rows="2"
+          maxlength="180"
+        >${task.description || ""}</textarea>
+      </div>
+          
+
     `;
 
     this._bindEvents(this.el);
@@ -111,11 +122,6 @@ export default class TaskItem {
     });
 
     const updateDates = () => {
-      if (Input.value && endInput.value && Input.value > endInput.value) {
-        AlertService.show(" date cannot be later than end date");
-        return;
-      }
-
       taskStore.updateField(task.id, "endDate", endInput.value || null);
     };
 
@@ -131,6 +137,27 @@ export default class TaskItem {
     const starBtn = el.querySelector(".task__star");
     starBtn.addEventListener("click", (e) => {
       taskStore.toggleStar(task.id);
+    });
+
+    // edit description
+    const description = el.querySelector(".task__description-input");
+    description.addEventListener("focus", () => {
+      taskStore.stopSync();
+    });
+
+    description.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.isComposing) {
+        e.preventDefault();
+        description.blur();
+      }
+    });
+
+    description.addEventListener("blur", () => {
+      const value = description.value.trim();
+
+      if (value !== task.description) {
+        taskStore.updateField(task.id, "description", value);
+      }
     });
   }
 

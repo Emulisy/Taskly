@@ -31,6 +31,7 @@
   align-items: flex-end;
   pointer-events: none;
   z-index: 1;
+  padding-left: 20px;
 }
 
 .star__bg-rect {
@@ -106,6 +107,29 @@
   border-top-right-radius: 10px;
 }
 
+.star__bg-star {
+  position: absolute;
+  left: -46px;
+  bottom: 500px;
+}
+
+.layer1 {
+  animation: starRotate 70s linear infinite;
+}
+
+.layer2 {
+  animation: starRotate 90s linear infinite;
+}
+
+@keyframes starRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes grow {
   from {
     height: 0;
@@ -132,24 +156,6 @@
   }
   to {
     height: calc(var(--final-height) * 0.5);
-  }
-}
-
-.star__bg-star {
-  position: absolute;
-  animation: growStar 0.2s forwards;
-  font-size: 15px;
-  color: var(--color-accent-light);
-  text-shadow: 0 0 2px var(--color-accent-light);
-  filter: drop-shadow(0 0 1px var(--color-accent-light));
-}
-
-@keyframes growStar {
-  from {
-    bottom: 0;
-  }
-  to {
-    bottom: 520px;
   }
 }
 
